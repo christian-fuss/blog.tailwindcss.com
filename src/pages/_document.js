@@ -3,12 +3,12 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 class InlineStylesHead extends Head {
-  getCssLinks() {
-    return this.__getInlineStyles()
+  getCssLinks({ allFiles }) {
+    return this.__getInlineStyles(allFiles)
   }
 
-  __getInlineStyles() {
-    const { assetPrefix, files } = this.context._documentProps
+  __getInlineStyles(files) {
+    const { assetPrefix } = this.context
     if (!files || files.length === 0) return null
 
     return files
